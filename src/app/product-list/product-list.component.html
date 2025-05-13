@@ -1,0 +1,8 @@
+<div>
+    <div *ngFor="let product of products">
+        <p>{{product.id}}</p>
+        <p>{{product.name}}</p>
+        <p>{{product.size}}</p>
+    </div>
+</div>
+<app-sort (sortChange)="sortProducts($event)"></app-sort>

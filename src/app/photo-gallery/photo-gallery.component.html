@@ -1,0 +1,42 @@
+<div class="gallery-wrapper">
+    <div class="image-container">
+        <a *ngFor="let singleImage of photos" [href]="singleImage.linkUrl">
+            <div class="image">
+                <p>ID: {{singleImage.id}}</p>
+       
+                <img [src]="singleImage.imgUrl" alt="{{singleImage.name}}">
+
+                <p>{{singleImage.name}}</p>
+                <p *ngIf="singleImage.size !== undefined">Rozmiar: {{singleImage.size}}px</p>
+            </div>
+        </a>
+    </div>
+    
+  
+    <div class="right">
+      <form #newPhotoForm="ngForm">
+        <p>Formularz dodawania obrazka</p>
+        <p>Id obrazka:</p>
+        <input [(ngModel)]="singlePhoto.id" type="number" name="id" required>
+        <p>Nazwa obrazka:</p>
+        <input [(ngModel)]="singlePhoto.name" type="text" name="name" required>
+        <p>Rozmiar obrazka:</p>
+        <input [(ngModel)]="singlePhoto.size" type="number" name="size">
+        <p>Adres obrazka:</p>
+        <input [(ngModel)]="singlePhoto.imgUrl" type="text" name="imgUrl" required>
+        <p>Link do strony:</p>
+        <input [(ngModel)]="singlePhoto.linkUrl" type="text" name="linkUrl" required>
+        <br>
+        <br>
+        {{logInfo(newPhotoForm)}}
+        <button (click)="addPhoto()" 
+                [disabled]="newPhotoForm.invalid"
+                [class.active]="!newPhotoForm.invalid"
+                [class.inactive]="newPhotoForm.invalid"
+                >
+          {{button}}
+        </button>
+      </form>
+    </div>
+  </div>
+  
